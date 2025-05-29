@@ -485,4 +485,4 @@ def matrix_transpose(matrix: List[List[float]]) -> dict:
 
 
 if __name__ == "__main__":
-    app.run(transport="streamable-http")
+    app.run(transport="sse")

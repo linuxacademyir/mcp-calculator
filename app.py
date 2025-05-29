@@ -1,3 +1,10 @@
+import os
+os.environ["FASTMCP_SERVER_HOST"] = "0.0.0.0"
+os.environ["FASTMCP_SERVER_PORT"] = "8000"
+
+from dotenv import load_dotenv
+load_dotenv()
+
 # To control host/port, set environment variables:
 #   FASTMCP_SERVER_HOST=0.0.0.0 FASTMCP_SERVER_PORT=8000 python app.py
 
@@ -15,9 +22,13 @@ app = FastMCP(
     description="A server for complex mathematical calculations",
     version="1.0.0",
     dependencies=["numpy", "scipy", "sympy"],
-    stateless_http=True
+    stateless_http=True,
+    host="0.0.0.0",
+    port=8000   
 )
 
+print("FASTMCP_SERVER_HOST:", os.environ.get("FASTMCP_SERVER_HOST"))
+print("FASTMCP_SERVER_PORT:", os.environ.get("FASTMCP_SERVER_PORT"))
 
 @app.tool()
 def calculate(expression: str) -> dict:
